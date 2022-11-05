@@ -5,35 +5,28 @@ class EarthShip {
         this.hull = hull;
         this.firepower = firepower;
         this.accuracy = accuracy;
-        this.attack = attack();
     }    
-    attack(){
-            if (Math.random() < USSHelloWorld.accuracy) { //randomize attack, if it's successful
-                (AlienShip.hull = AlienShip.hull - USSHelloWorld.firepower) //assess damage to aliens
-                console.log('Nice Shot, Gunner!');//indicates a successful attack
-                console.log(AlienShip.name + 'has ' + AlienShip.hull + ' hull remaining'); //shows new hull rating, status check
-              if (AlienShip.hull > 0){ //if alien ship is still alive, they retaliate
-                if(Math.random() < AlienShip.accuracy) { //randomize attack based on accuracy
-                    (USSHelloWorld.hull = USSHelloWorld.hull - AlienShip.firepower) //calculate damage
-                    console.log("We're taking damage!")//indicates a successful attack
-                    console.log('We have ' + USSHelloWorld.hull + ' hull remaining!' ) //shows new hull rating, status check
-                    if(USSHelloWorld.hull <= 0){
-                        console.log('The hull is breached! Initializing escape sequence!')
-                        //modal indicating Game Over message, click to try again
-                    } 
-                } else if (Math.random() > AlienShip.accuracy){
-                    console.log("That was a close one!");
-                    } 
-              } else if (AlienShip.hull <= 0){ //if damage drives Alien hull to zero or below
-                AlienFleet.shift(); //remove AlienFleet[0] and move AlienFleet[1] into [0]
-                console.log("Smoked'em! Is that all you got?!")
-                // modal indicating victory over this ship, Retreat or continue battle click options
-                } 
-            } else if (Math.random() > USSHelloWorld.accuracy){
-                console.log("Rats! Missed!")
+
+    attack(alien){
+        console.log('MATCH BEARING AND SHOOT')
+            if (Math.random() > this.accuracy){
+                console.log("Rats! Missed!");
+                AlienFleet[0].retaliate(USSHelloWorld)
+                } else if (Math.random() < this.accuracy) { 
+                        (alien.hull = alien.hull - this.firepower) 
+                        console.log('Nice Shot, Gunner!');
+                        console.log(alien.name + ' has ' + alien.hull + ' hull remaining')
+                        if (alien.hull > 0){
+                        AlienFleet[0].retaliate(USSHelloWorld)
                 }
-        }
+            if (alien.hull <= 0){ 
+                    AlienFleet.shift(); 
+                    console.log("Smoked'em! Is that all you got?!")
+                    // game.checkWin() 
+                } 
     }
+}
+}
 
 class AlienShip {
     constructor (name){
@@ -51,31 +44,49 @@ class AlienShip {
             randomAccuracy() {
                 return(Math.floor(Math.random() * 3) + 6) / 10;
             }
-}
+            retaliate(uss){
+                console.log('INCOMING!')
+                    if (Math.random() < this.accuracy) {
+                        console.log("That was close!");
+                        USSHelloWorld.attack(AlienFleet[0])
+                    } else if (Math.random() < this.accuracy) {
+                            (uss.hull = uss.hull - this.firepower) 
+                            console.log("We're taking damage!")
+                            console.log('We have ' + uss.hull + ' hull remaining!' )
+                            if (uss.hull > 0) {
+                                USSHelloWorld.attack(AlienFleet[0])
+                            }
+                    if (uss.hull <= 0){
+                        console.log('The hull is breached! Initializing escape sequence!')
+                        //modal indicating Game Over message, click to try again
+                            } 
+            }
+        }
+            
+    }
+
 let AlienFleet = []
 const makeNewAlienship = (name) => {
     const newAlienShip = new AlienShip(name);
     AlienFleet.push(newAlienShip);
 }   
-for (let i = 1; i < 7; i++){
-    makeNewAlienship('Mu_k_' + i);
+for (let i = 0; i < 6; i++){
+    makeNewAlienship('Alien Ship ' + i);
 }
-console.log(AlienFleet)
+// console.log(AlienFleet) 
 
 let USSHelloWorld = new EarthShip('USSHelloWorld', 20, 5, .7)
-// console.log(USSHelloWorld)
+console.log(USSHelloWorld)
 
 let game = {
     checkWin: () => {
-        if (AlienFleet.length < 0){
-        //modal "You Win! Earth is safe from extra-terrestrial invaders...for now! Play again Y/N"
+        if (AlienFleet.length <= 0){
+            console.log("You Win! Earth is safe from extra-terrestrial invaders...for now! Play again? Y/N")
+            } else console.log('Do you want to continue the attack on the next ship? Y/N')
         }
-    }
-
-    }
-
-
     
 
-// console.log(AlienShip1)
-// attack(AlienShip1)
+    }
+USSHelloWorld.attack(AlienFleet[0])
+USSHelloWorld.attack(AlienFleet[0])
+
