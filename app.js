@@ -97,10 +97,16 @@ var startBtn = document.getElementById('startBtn');
 var attackBtn = document.getElementById('attackBtn');
 //get continue modal
 var contModal = document.getElementById('contModal');
+//get continue button
+var contBtn = document.getElementById('contBtn');
 //get victory modal
 var victModal = document.getElementById('victModal');
+//get play again button
+var againBtn = document.getElementById('againBtn')
 //get defeat modal
 var defeatModal = document.getElementById('defeatModal');
+//get try again button
+var tryBtn = document.getElementById('tryBtn')
 
 startBtn.addEventListener('click', acceptMission);
 
@@ -116,5 +122,18 @@ function startGame(){
     attackModal.style.display = 'none';
     USSHelloWorld.attack(AlienFleet[0]);
 }
+//listen for click event for contBtn with attack function
+contBtn.addEventListener('click', continueMission);
+function continueMission(){
+    contModal.style.display = 'none';
+    USSHelloWorld.attack(AlienFleet[0]);
+}
+//Listen for click event for restartBtn with restart function oohhh dear how to do that
+restartBtn.addEventListener('click', restartGame);
+function restartGame(){
+    location.reload()
+}
 
-
+//Listen for click event for againBtn with restart function
+againBtn.addEventListener('click', restartGame);
+tryBtn.addEventListener('click', restartGame);
