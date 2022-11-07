@@ -21,8 +21,9 @@ class EarthShip {
                 }
             if (alien.hull <= 0){ 
                     AlienFleet.shift(); 
-                    console.log("Smoked'em! Is that all you got?!")
-                    // game.checkWin() 
+                    console.log("Smoked'em! Is that all you got?!");
+                    contModal.style.display = 'block';
+                    game.checkWin();
                 } 
     }
 }
@@ -57,8 +58,8 @@ class AlienShip {
                                 USSHelloWorld.attack(AlienFleet[0])
                             }
                     if (uss.hull <= 0){
-                        console.log('The hull is breached! Initializing escape sequence!')
-                        //modal indicating Game Over message, click to try again
+                        console.log('The hull is breached! Initializing escape sequence!');
+                        defeatModal.style.display = 'block'
                             } 
             }
         }
@@ -73,7 +74,6 @@ const makeNewAlienship = (name) => {
 for (let i = 0; i < 6; i++){
     makeNewAlienship('Alien Ship ' + i);
 }
-// console.log(AlienFleet) 
 
 let USSHelloWorld = new EarthShip('USSHelloWorld', 20, 5, .7)
 console.log(USSHelloWorld)
@@ -81,12 +81,40 @@ console.log(USSHelloWorld)
 let game = {
     checkWin: () => {
         if (AlienFleet.length <= 0){
-            console.log("You Win! Earth is safe from extra-terrestrial invaders...for now! Play again? Y/N")
-            } else console.log('Do you want to continue the attack on the next ship? Y/N')
+            victModal.style.display = 'block';
         }
     
 
     }
-USSHelloWorld.attack(AlienFleet[0])
-USSHelloWorld.attack(AlienFleet[0])
+}
+//get start modal element
+var startModal = document.getElementById('startModal');
+//get attack modal element
+var attackModal = document.getElementById('attackModal');
+//get start button
+var startBtn = document.getElementById('startBtn');
+//get attack button
+var attackBtn = document.getElementById('attackBtn');
+//get continue modal
+var contModal = document.getElementById('contModal');
+//get victory modal
+var victModal = document.getElementById('victModal');
+//get defeat modal
+var defeatModal = document.getElementById('defeatModal');
+
+startBtn.addEventListener('click', acceptMission);
+
+//listen for start click--close intro modal, opens start game modal w/ attack button
+function acceptMission(){
+    startModal.style.display = 'none';
+    attackModal.style.display = 'block';
+}
+attackBtn.addEventListener('click', startGame);
+
+//Listen for attack click--close attack modal, begins game with first attack
+function startGame(){
+    attackModal.style.display = 'none';
+    USSHelloWorld.attack(AlienFleet[0]);
+}
+
 

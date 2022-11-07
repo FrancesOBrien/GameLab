@@ -24,10 +24,10 @@ justify-content: space-around;
 align-items: center;
 }
 .left{
-
+    color: blue;
 }
 .right{
-    
+    color: red;
 }
 
 .nameBox{
@@ -94,4 +94,93 @@ align-items: center;
     font-size: 1.5em;
     box-shadow: 0px 0px 20px 10px white;
 
+}
+.modal{
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+#startModal{
+    display: block;
+    text-align: center;
+    align-items: center;
+}
+#attackModal{
+    display: none;
+    text-align: center;
+}
+#victModal{
+    display: none;
+    text-align: center;
+}
+#defeatModal{
+    display: none;
+    text-align: center;
+}
+#contModal{
+    display: none;
+    text-align: center;
+}
+
+.modal-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 0 5x 8px rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.5);
+}
+#startBtn{
+    background-color: coral;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    float: right;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow: 0 5x 8px rgba(0,0,0,0.17), 0 7px 20px 0 rgba(0,0,0,0.4)
+}
+#startBtn:hover{
+    color: black;
+    text-decoration: none;
+    cursor:crosshair;
+}
+#attackBtn{
+    background-color: coral;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    float: right;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow: 0 5x 8px rgba(0,0,0,0.17), 0 7px 20px 0 rgba(0,0,0,0.4)
+}
+#attackBtn:hover{
+    color: black;
+    text-decoration: none;
+    cursor:crosshair;
+}
+#restartBtn{
+    background-color: coral;
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    float: right;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow: 0 5x 8px rgba(0,0,0,0.17), 0 7px 20px 0 rgba(0,0,0,0.4)
+}
+#restartBtn:hover{
+    color: black;
+    text-decoration: none;
+    cursor:crosshair;
 }

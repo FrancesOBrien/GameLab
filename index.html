@@ -11,6 +11,42 @@
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
+      
+
+
+      <div id="startModal" class="modal-content">
+      <!-- <div class="modal"> -->
+          <p>Earth is under attack. The ISS has identified a fleet of highly advanced spacecraft arrayed for invasion at strategic points surrounding the planet. The UN is calling on all Earth spacecraft to join the mission to defend the globe! As Commander of the USS Hello World, our planet needs you to destroy invading ships!
+            <button id="startBtn" class="button">Accept Mission</button>
+          </div>
+
+      <div id="attackModal" class="modal-content">   
+        <!-- <div class="modal"> -->
+        <p>The first ship is coming into range!</p>
+          <button id="attackBtn" class="button">Attack!</button>
+        </div>
+
+      <div id="contModal" class="modal-content">   
+          <!-- <div class="modal"> -->
+          <p>The next ship is coming into range! Continue Attack?</p>
+            <button id="attackBtn" class="button">Attack!</button>
+            <button id="restartBtn" class="button">Restart</button>
+      </div>
+
+      <div id="victModal" class="modal-content">   
+        <!-- <div class="modal"> -->
+        <p>Congratulations! You have eliminated the enemy fleet. Earth is safe from invasion...for now. Would you like to play again?</p>
+          <button id="restartBtn" class="button">Play Again?</button>
+        </div>
+      
+        <div id="defeatModal" class="modal-content">   
+          <!-- <div class="modal"> -->
+          <p>Your ship is destroyed and all surviving crew have evacuated in escape pods. Return to base to regroup"</p>
+            <button id="restartBtn" class="Play Again?">Attack!</button>
+          </div>
+
+      <div class="container">
+
     <div class="bodyContainer">
 
         <div class="mainCharacterView left" >
@@ -22,7 +58,7 @@
                 FirePower : 5 <br>
                 Accuracy : .7 <br>
 
-z
+
 
                 </div>
 
@@ -31,7 +67,7 @@ z
 
         <div class="mainCharacterView right">
            
-            <div class="nameBox">Enemy</div>
+            <div class="nameBox">Invaders</div>
             <div class="enemyImage"></div>
                 <div class="enemyStats">
                     Hull : 6 <br>
