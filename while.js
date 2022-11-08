@@ -8,7 +8,7 @@ class EarthShip {
     }    
 
     attack(alien){
-        console.log('MATCH BEARING AND SHOOT')
+        // console.log('MATCH BEARING AND SHOOT')
             if (Math.random() > this.accuracy){
                 console.log("Rats! Missed!");
                 AlienFleet[0].retaliate(USSHelloWorld)
@@ -22,7 +22,7 @@ class EarthShip {
             if (alien.hull <= 0){ 
                     AlienFleet.shift(); 
                     console.log("Smoked'em! Is that all you got?!");
-                    contModal.style.display = 'block';
+                    // contModal.style.display = 'block';
                     game.checkWin();
                 } 
     }
@@ -47,19 +47,20 @@ class AlienShip {
             }
             retaliate(uss){
                 // console.log('INCOMING!')
-                    if (Math.random() < this.accuracy) {
-                        console.log("That was close!");
+                    if (Math.random() > this.accuracy) {
+                        // console.log("That was close!");
                         USSHelloWorld.attack(AlienFleet[0])
                     } else if (Math.random() < this.accuracy) {
                             (uss.hull = uss.hull - this.firepower) 
-                            console.log("We're taking damage!")
+                            // console.log("We're taking damage!")
                             console.log('We have ' + uss.hull + ' hull remaining!' )
+                            // document.getElementById('life').innerHTML = uss.hull
                             if (uss.hull > 0) {
                                 USSHelloWorld.attack(AlienFleet[0])
                             }
                     if (uss.hull <= 0){
                         console.log('The hull is breached!');
-                        defeatModal.style.display = 'block'
+                        // defeatModal.style.display = 'block'
                             } 
             }
         }
@@ -81,59 +82,11 @@ console.log(USSHelloWorld)
 let game = {
     checkWin: () => {
         if (AlienFleet.length <= 0){
-            victModal.style.display = 'block';
+            // victModal.style.display = 'block';
         }
     
 
     }
 }
-//get start modal element
-var startModal = document.getElementById('startModal');
-//get attack modal element
-var attackModal = document.getElementById('attackModal');
-//get start button
-var startBtn = document.getElementById('startBtn');
-//get attack button
-var attackBtn = document.getElementById('attackBtn');
-//get continue modal
-var contModal = document.getElementById('contModal');
-//get continue button
-var contBtn = document.getElementById('contBtn');
-//get victory modal
-var victModal = document.getElementById('victModal');
-//get play again button
-var againBtn = document.getElementById('againBtn')
-//get defeat modal
-var defeatModal = document.getElementById('defeatModal');
-//get try again button
-var tryBtn = document.getElementById('tryBtn')
 
-startBtn.addEventListener('click', acceptMission);
-
-//listen for start click--close intro modal, opens start game modal w/ attack button
-function acceptMission(){
-    startModal.style.display = 'none';
-    attackModal.style.display = 'block';
-}
-attackBtn.addEventListener('click', startGame);
-
-//Listen for attack click--close attack modal, begins game with first attack
-function startGame(){
-    attackModal.style.display = 'none';
-    USSHelloWorld.attack(AlienFleet[0]);
-}
-//listen for click event for contBtn with attack function
-contBtn.addEventListener('click', continueMission);
-function continueMission(){
-    contModal.style.display = 'none';
-    USSHelloWorld.attack(AlienFleet[0]);
-}
-//Listen for click event for restartBtn with restart function oohhh dear how to do that
-restartBtn.addEventListener('click', restartGame);
-function restartGame(){
-    location.reload()
-}
-
-//Listen for click event for againBtn with restart function
-againBtn.addEventListener('click', restartGame);
-tryBtn.addEventListener('click', restartGame);
+USSHelloWorld.attack(AlienFleet[0])
